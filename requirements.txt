@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+duckdb
+geopandas
+shapely
+python-dotenv
+overturemaps
+APScheduler
