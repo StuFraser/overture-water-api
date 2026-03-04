@@ -36,7 +36,7 @@ No regional data files. No upfront downloads. No billing surprises.
 ### Installation
 
 ```bash
-git clone https://github.com/StuFraser/overture-water-api.git
+git clone https://github.com/StuFraser/getwet.git
 cd overture-water-api
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
