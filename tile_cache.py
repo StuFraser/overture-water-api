@@ -174,7 +174,6 @@ def _query_overture(bbox: dict) -> list[dict]:
 
         SELECT
             names.primary                               AS name,
-            CAST(names AS JSON)                         AS names_json,
             subtype,
             class,
             CAST(is_intermittent AS BOOLEAN)            AS is_intermittent,
@@ -199,31 +198,16 @@ def _query_overture(bbox: dict) -> list[dict]:
 
     features = []
     for row in rows:
-        if not row[5]:  # skip null geometries
+        if not row[4]:  # skip null geometries
             continue
 
-        # Extract English name from names JSON if available.
-        # Overture names.common is a map of language -> list of name entries.
-        name_en = None
-        try:
-            names_data = json.loads(row[1]) if row[1] else {}
-            common = names_data.get("common", [])
-            # common is a list of {language, value} objects
-            for entry in common:
-                if entry.get("language") == "en":
-                    name_en = entry.get("value")
-                    break
-        except (json.JSONDecodeError, TypeError, AttributeError):
-            pass
-
         features.append({
-            "geometry": row[5],
+            "geometry": row[4],
             "name": row[0],
-            "name_en": name_en,
-            "subtype": row[2],
-            "class": row[3],
+            "subtype": row[1],
+            "class": row[2],
             "is_salt": None,        # not in current Overture schema, inferred by water.py
-            "is_intermittent": row[4],
+            "is_intermittent": row[3],
         })
 
     logger.info("Fetched %d features from Overture S3", len(features))

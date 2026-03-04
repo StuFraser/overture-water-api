@@ -1,4 +1,4 @@
-# 💧 overture-water-api
+# 💧 GetWet
 
 > A lightweight, self-contained REST API for water body detection and classification — powered by Overture Maps data.
 

@@ -89,7 +89,6 @@ CONFIDENCE_MEDIUM_M: float = 200.0
 class WaterResult:
     is_water: bool
     name: Optional[str]
-    name_en: Optional[str]
     subtype: Optional[str]
     water_class: Optional[str]      # raw Overture class value
     category: Optional[str]         # normalised category
@@ -102,7 +101,6 @@ class WaterResult:
         return {
             "is_water": self.is_water,
             "name": self.name,
-            "name_en": self.name_en,
             "subtype": self.subtype,
             "class": self.water_class,
             "category": self.category,
@@ -147,7 +145,6 @@ class WaterService:
             return WaterResult(
                 is_water=False,
                 name=None,
-                name_en=None,
                 subtype=None,
                 water_class=None,
                 category=None,
@@ -187,7 +184,6 @@ class WaterService:
             return WaterResult(
                 is_water=True,
                 name=feat.get("name"),
-                name_en=feat.get("name_en"),
                 subtype=feat.get("subtype"),
                 water_class=feat.get("class"),
                 category=category,
@@ -201,7 +197,6 @@ class WaterService:
         return WaterResult(
             is_water=False,
             name=None,
-            name_en=None,
             subtype=None,
             water_class=None,
             category=None,

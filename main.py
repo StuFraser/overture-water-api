@@ -35,12 +35,11 @@ logger = logging.getLogger(__name__)
 # App
 # ---------------------------------------------------------------------------
 app = FastAPI(
-    title="Overture Water API",
+    title="GetWet API",
     description=(
-        "On-demand global water body detection powered by Overture Maps. "
+        "Global water body detection powered by Overture Maps. "
         "Drop a coordinate anywhere in the world and instantly know whether "
-        "it falls within a water body, what type it is, and how close the "
-        "nearest water is if not."
+        "it falls within a water body, what type it is, and what it's called."
     ),
     version="2.0.0",
 )
