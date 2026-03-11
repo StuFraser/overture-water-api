@@ -8,6 +8,7 @@ on:
 
 env:
   IMAGE_NAME: ghcr.io/stufraser/getwet
+  WEBAPP_NAME: GetWet
 
 jobs:
   build:
@@ -49,5 +50,5 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
+          app-name: GetWet
           images: ${{ env.IMAGE_NAME }}:${{ github.sha }}
